@@ -15,7 +15,9 @@ public class OutputProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer amount;
+    @Column(nullable = false)
+    private Double amount;
+
     private Double price;
 
     @ManyToOne

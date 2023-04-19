@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -15,8 +16,9 @@ public class Input {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date date;
+    private Timestamp date;
     private String factureNumber;
+    @Column(unique = true, nullable = false)
     private String code;
 
     @ManyToOne

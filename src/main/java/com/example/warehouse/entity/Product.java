@@ -1,28 +1,28 @@
 package com.example.warehouse.entity;
 
+import com.example.warehouse.entity.template.AbsEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.LifecycleState;
 
 import javax.persistence.*;
-import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String name;
-    private Boolean active;
+public class Product extends AbsEntity {
+
     private String code;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Category category;
 
-    @ManyToOne
+    @OneToOne
+    Attachment photo;
+
+    @ManyToOne(optional = false)
     private Measurement measurement;
 }

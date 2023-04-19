@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -15,8 +14,8 @@ public class AttachmentContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Long bytes;
+    private byte[] bytes;
 
-    @OneToMany
-    private List<Attechment> attechments;
+    @OneToOne
+    private Attachment attachment;
 }
